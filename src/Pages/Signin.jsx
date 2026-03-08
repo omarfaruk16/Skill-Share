@@ -1,0 +1,114 @@
+import React, { useState } from "react";
+import { Eye, EyeOff } from "lucide-react"; // Optional: install lucide-react for icons
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import { NavLink } from "react-router";
+
+const Signin = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  return (
+    <>
+      <Header></Header>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+        {/* Main Card Container */}
+        <div className="bg-white w-full max-w-md rounded-[2rem] shadow-sm border border-gray-100 p-10 flex flex-col items-center">
+          {/* Logo and Header */}
+          <div className="mb-8 text-center">
+            <span className="text-4xl mb-4 block">🌻</span>
+            <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">
+              Welcome Back
+            </h1>
+            <p className="text-gray-500 font-medium">
+              Log in to your SkillSwap account
+            </p>
+          </div>
+
+          {/* Form Fields */}
+          <form
+            className="w-full space-y-5"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            {/* Email Field */}
+            <div className="space-y-2">
+              <label className="block text-sm font-bold text-gray-800 ml-1">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all placeholder:text-gray-400"
+              />
+            </div>
+
+            {/* Password Field */}
+            <div className="space-y-2">
+              <label className="block text-sm font-bold text-gray-800 ml-1">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all placeholder:text-gray-400"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+              <div className="text-right">
+                <a
+                  href="#"
+                  className="text-sm font-semibold text-yellow-500 hover:text-yellow-600"
+                >
+                  Forgot Password?
+                </a>
+              </div>
+            </div>
+
+            {/* Login Button */}
+            <button className="w-full py-4 bg-[#E9C46A] hover:bg-[#dfb44e] text-gray-900 font-bold rounded-xl transition-colors mt-2 shadow-sm">
+              Login
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="w-full flex items-center my-8">
+            <div className="flex-1 border-t border-gray-200"></div>
+            <span className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-widest">
+              OR
+            </span>
+            <div className="flex-1 border-t border-gray-200"></div>
+          </div>
+
+          {/* Social Login */}
+          <button className="w-full flex items-center justify-center gap-3 py-3.5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors font-semibold text-gray-700">
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/smartlock/google.svg"
+              alt="Google"
+              className="w-5 h-5"
+            />
+            Continue with Google
+          </button>
+
+          {/* Footer Link */}
+          <p className="mt-10 text-gray-500 font-medium">
+            Don't have an account?{" "}
+            <NavLink to="/signup" className="text-yellow-500 font-bold hover:underline">
+              Sign Up
+            </NavLink>
+          </p>
+        </div>
+      </div>
+      <Footer></Footer>
+    </>
+  );
+};
+
+export default Signin;

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Priya Sharma",
+    "role": "Yoga & Meditation",
+    "rating": 4.9,
+    "sessions": 120,
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya"
+  },
+  {
+    "id": 2,
+    "name": "James Chen",
+    "role": "Web Development",
+    "rating": 4.7,
+    "sessions": 95,
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=James"
+  },
+  {
+    "id": 3,
+    "name": "Alex Martin",
+    "role": "Guitar & Music",
+    "rating": 4.8,
+    "sessions": 80,
+    "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex"
+  }
+]

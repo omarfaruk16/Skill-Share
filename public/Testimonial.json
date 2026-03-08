@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Riya Das",
+      "rating": 5,
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Riya",
+      "quote": "SkillSwap helped me find an amazing guitar teacher in my neighborhood. The whole experience was seamless and enjoyable!"
+    },
+    {
+      "id": 2,
+      "name": "Tom Wilson",
+      "rating": 5,
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Tom",
+      "quote": "I've been teaching yoga on SkillSwap for 6 months now. The platform makes connecting with students incredibly easy."
+    },
+    {
+      "id": 3,
+      "name": "Aisha Khan",
+      "rating": 5,
+      "image": "https://api.dicebear.com/7.x/avataaars/svg?seed=Aisha",
+      "quote": "Learned Spanish in just 3 months through weekly sessions. The quality of providers here is outstanding!"
+    }
+  ]

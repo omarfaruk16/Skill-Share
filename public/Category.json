@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Music",
+        "icon": "🎵",
+        "bg": "bg-[#fdf8e1]",
+        "color": "text-purple-600"
+    },
+    {
+        "id": 2,
+        "name": "Language",
+        "icon": "🗣️",
+        "bg": "bg-[#f9e8e2]",
+        "color": "text-orange-600"
+    },
+    {
+        "id": 3,
+        "name": "Development",
+        "icon": "💻",
+        "bg": "bg-[#eef5f3]",
+        "color": "text-blue-600"
+    },
+    {
+        "id": 4,
+        "name": "Wellness",
+        "icon": "💪",
+        "bg": "bg-[#f7efe3]",
+        "color": "text-yellow-700"
+    },
+    {
+        "id": 5,
+        "name": "Photography",
+        "icon": "🎨",
+        "bg": "bg-[#f6ede6]",
+        "color": "text-pink-600"
+    },
+    {
+        "id": 6,
+        "name": "Design",
+        "icon": "🍳",
+        "bg": "bg-[#eef4ee]",
+        "color": "text-teal-600"
+    }
+]
