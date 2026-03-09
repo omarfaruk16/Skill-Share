@@ -1,12 +1,42 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Eye, EyeOff } from "lucide-react"; // Optional: install lucide-react for icons
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { SignInEmailPass, SignInwithGoogle } = useContext(AuthContext)
+  const navigate = useNavigate()
 
+  const HangleSignIn = (e) =>{
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log([email, password]);
+    SignInEmailPass(email,password).then((result)=>{
+        const user = result.user;
+        navigate("/");
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+  }
+  const HandleSignInwithGoogle = () =>{ 
+    SignInwithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/")
+      })
+      .catch((error) => {
+        console.log(error);
+      });}
+
+
+  
   return (
     <>
       <Header></Header>
@@ -73,10 +103,11 @@ const Signin = () => {
             </div>
 
             {/* Login Button */}
-            <button className="w-full py-4 bg-[#E9C46A] hover:bg-[#dfb44e] text-gray-900 font-bold rounded-xl transition-colors mt-2 shadow-sm">
+            <button onClick={HangleSignIn} className="w-full py-4 bg-[#E9C46A] hover:bg-[#dfb44e] text-gray-900 font-bold rounded-xl transition-colors mt-2 shadow-sm">
               Login
             </button>
           </form>
+          
 
           {/* Divider */}
           <div className="w-full flex items-center my-8">
@@ -88,13 +119,15 @@ const Signin = () => {
           </div>
 
           {/* Social Login */}
-          <button className="w-full flex items-center justify-center gap-3 py-3.5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors font-semibold text-gray-700">
+          <button onClick={HandleSignInwithGoogle} className="w-full flex items-center justify-center gap-3 border border-gray-200 py-3 rounded-xl hover:bg-gray-50 transition mb-6">
             <img
-              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/smartlock/google.svg"
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
               alt="Google"
               className="w-5 h-5"
             />
-            Continue with Google
+            <span className="text-gray-700 font-medium">
+              Continue with Google
+            </span>
           </button>
 
           {/* Footer Link */}

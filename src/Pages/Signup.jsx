@@ -1,21 +1,54 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { SignupEmailPass, SignInwithGoogle, UpdateProfile, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const hangleSignup = (e) =>{
-    e.preventDefault()
+  const hangleSignup = (e) => {
+    e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const photourl = form.photourl.value;
     const password = form.password.value;
-    console.log([name, email, photourl, password])
-  }
+    console.log([name, email, photourl, password]);
+    SignupEmailPass(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        UpdateProfile({ displayName: name, photoURL: photourl}).then(()=>{
+          setUser({...user, displayName: name, photoURL:photourl})                // যেহেতু আগেই email, pass দিয়ে user create করে ফেলেছি এবং পরে name & photo সংযুক্ত করবো তাই ... 
+          navigate("/")
+        })
+        .catch((error)=>{
+          console.log(error)
+        })
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+      });
+  };
+
+  const HandleSignInwithGoogle = () => {
+    SignInwithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -126,7 +159,10 @@ const Signup = () => {
           </div>
 
           {/* Google Button */}
-          <button className="w-full flex items-center justify-center gap-3 border border-gray-200 py-3 rounded-xl hover:bg-gray-50 transition mb-6">
+          <button
+            onClick={HandleSignInwithGoogle}
+            className="w-full flex items-center justify-center gap-3 border border-gray-200 py-3 rounded-xl hover:bg-gray-50 transition mb-6"
+          >
             <img
               src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
               alt="Google"
@@ -140,7 +176,10 @@ const Signup = () => {
           {/* Footer */}
           <p className="text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <NavLink to="/signin" className="text-[#E9C46A] font-bold hover:underline">
+            <NavLink
+              to="/signin"
+              className="text-[#E9C46A] font-bold hover:underline"
+            >
               Login
             </NavLink>
           </p>
