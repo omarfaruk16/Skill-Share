@@ -9,10 +9,13 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true)
     const SignupEmailPass = ( email, password) =>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
 }
     const SignInEmailPass = (email, password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -27,11 +30,13 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
     const SignInwithGoogle = () =>{
+        setLoading(true);
         return signInWithPopup(auth, provider)
     }
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
+            setLoading(false);
             setUser(currentUser);
         })
         return ()=>{
@@ -47,7 +52,8 @@ const AuthProvider = ({ children }) => {
         SignOut,
         SignInwithGoogle,
         user,
-        setUser
+        setUser,
+        loading
     }
 
   return (

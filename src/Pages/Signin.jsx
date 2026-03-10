@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Eye, EyeOff } from "lucide-react"; // Optional: install lucide-react for icons
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Signin = () => {
@@ -10,6 +10,8 @@ const Signin = () => {
   const { SignInEmailPass, SignInwithGoogle } = useContext(AuthContext)
   const navigate = useNavigate()
 
+  const location = useLocation()
+  console.log(location);
   const HangleSignIn = (e) =>{
     e.preventDefault();
     const form = e.target;
@@ -18,7 +20,7 @@ const Signin = () => {
     console.log([email, password]);
     SignInEmailPass(email,password).then((result)=>{
         const user = result.user;
-        navigate("/");
+        navigate(location.state);
     })
     .catch((error)=>{
         console.log(error)
