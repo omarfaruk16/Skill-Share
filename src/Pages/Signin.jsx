@@ -57,7 +57,7 @@ const Signin = () => {
           {/* Form Fields */}
           <form
             className="w-full space-y-5"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={HangleSignIn}
           >
             {/* Email Field */}
             <div className="space-y-2">
@@ -103,7 +103,7 @@ const Signin = () => {
             </div>
 
             {/* Login Button */}
-            <button onClick={HangleSignIn} className="w-full py-4 bg-[#E9C46A] hover:bg-[#dfb44e] text-gray-900 font-bold rounded-xl transition-colors mt-2 shadow-sm">
+            <button type="submit" className="w-full py-4 bg-[#E9C46A] hover:bg-[#dfb44e] text-gray-900 font-bold rounded-xl transition-colors mt-2 shadow-sm">
               Login
             </button>
           </form>

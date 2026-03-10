@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router";
 import logo from "../assets/logo.png";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Header = () => {
   const { user, SignOut } = useContext(AuthContext);
+  const [seeUserName, setSeeUserName] = useState(false);
+
   console.log("user", user);
 
   const handleSignOut = () => {
@@ -63,7 +65,11 @@ const Header = () => {
           </li>
           <li>
             {user ? (
-              <div className="flex items-center justify-center">
+              <div
+                onMouseEnter={() => setSeeUserName(true)}
+                onMouseLeave={() => setSeeUserName(false)}
+                className="flex items-center justify-center"
+              >
                 <img
                   className="rounded-4xl max-w-8 h-fit"
                   src={
@@ -73,7 +79,11 @@ const Header = () => {
                   }
                   alt="user"
                 />
-                <p className="text-sm font-light">{user.displayName ? user.displayName : "Profile"}</p>
+                {seeUserName && (
+                  <p className="text-sm font-light">
+                    {user.displayName ? user.displayName : "Profile"}
+                  </p>
+                )}
               </div>
             ) : (
               <NavLink className="hover:text-yellow" to="/signup">
