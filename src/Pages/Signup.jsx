@@ -7,7 +7,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { SignupEmailPass, SignInwithGoogle, UpdateProfile, setUser } = useContext(AuthContext);
+  const { SignupEmailPass, SignInwithGoogle, UpdateProfile, setUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const hangleSignup = (e) => {

@@ -13,6 +13,7 @@ const Signin = () => {
   const location = useLocation()
   console.log(location);
   const HangleSignIn = (e) =>{
+    
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -20,7 +21,7 @@ const Signin = () => {
     console.log([email, password]);
     SignInEmailPass(email,password).then((result)=>{
         const user = result.user;
-        navigate(location.state);
+        navigate(location.state ? location.state : "/");
     })
     .catch((error)=>{
         console.log(error)
@@ -95,12 +96,11 @@ const Signin = () => {
                 </button>
               </div>
               <div className="text-right">
-                <a
-                  href="#"
+                <NavLink to="/forget-password"
                   className="text-sm font-semibold text-yellow-500 hover:text-yellow-600"
                 >
                   Forgot Password?
-                </a>
+                </NavLink>
               </div>
             </div>
 

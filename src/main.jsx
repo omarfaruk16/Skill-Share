@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { RouterProvider } from "react-router/dom";
 import router from "./router/router.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
+import 'react-toastify/dist/ReactToastify.css';
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
