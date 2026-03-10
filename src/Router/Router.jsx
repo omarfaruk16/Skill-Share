@@ -5,6 +5,7 @@ import CategorySkills from "../Components/Home/CategorySkills";
 import CategoryDetails from "../Components/Home/CategoryDetails";
 import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/category-details/:id",
-    Component: CategoryDetails,
+    element: 
+    <PrivateRoute>
+      <CategoryDetails></CategoryDetails>
+    </PrivateRoute>,
     loader: () => fetch("/Skills.json")
   },
   {
