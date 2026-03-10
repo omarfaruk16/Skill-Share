@@ -5,9 +5,20 @@ import Footer from "../Components/Footer";
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 
+function hasUppercase(password) {
+  return /[A-Z]/.test(password);
+}
+function hasLowercase(password) {
+  return /[a-z]/.test(password);
+}
+function hasMinLength(password) {
+  return password.length >= 6;
+}
+
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { SignupEmailPass, SignInwithGoogle, UpdateProfile, setUser, user } = useContext(AuthContext);
+  const { SignupEmailPass, SignInwithGoogle, UpdateProfile, setUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const hangleSignup = (e) => {
@@ -17,6 +28,19 @@ const Signup = () => {
     const email = form.email.value;
     const photourl = form.photourl.value;
     const password = form.password.value;
+
+    if (!hasMinLength(password)){
+      return setError("Password must be at least 6 characters")
+    }
+    if (!hasUppercase(password)){
+      setError("Must have an Uppercase letter")
+      return;
+    }
+    if (!hasLowercase(password)){
+      setError("Must have a Lowercase letter")
+      return;
+    }
+
     console.log([name, email, photourl, password]);
     SignupEmailPass(email, password)
       .then((result) => {
@@ -27,14 +51,14 @@ const Signup = () => {
           navigate("/")
         })
         .catch((error)=>{
+          setError(error.message)
           console.log(error)
         })
-        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        setError(errorMessage)
       });
   };
 
@@ -140,6 +164,8 @@ const Signup = () => {
                 </li>
               </ul>
             </div>
+
+            {error && <p className="text-red-500 text-sm">{error}</p>}
 
             {/* Register Button */}
             <button

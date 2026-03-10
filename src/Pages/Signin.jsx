@@ -7,39 +7,41 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { SignInEmailPass, SignInwithGoogle } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { SignInEmailPass, SignInwithGoogle } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const location = useLocation()
+  const location = useLocation();
   console.log(location);
-  const HangleSignIn = (e) =>{
-    
+  const HangleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log([email, password]);
-    SignInEmailPass(email,password).then((result)=>{
+    SignInEmailPass(email, password)
+      .then((result) => {
         const user = result.user;
         navigate(location.state ? location.state : "/");
-    })
-    .catch((error)=>{
-        console.log(error)
-    })
-  }
-  const HandleSignInwithGoogle = () =>{ 
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message);
+      });
+  };
+  const HandleSignInwithGoogle = () => {
     SignInwithGoogle()
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate("/")
+        navigate("/");
       })
       .catch((error) => {
+        setError(error.message);
         console.log(error);
-      });}
+      });
+  };
 
-
-  
   return (
     <>
       <Header></Header>
@@ -58,10 +60,7 @@ const Signin = () => {
           </div>
 
           {/* Form Fields */}
-          <form
-            className="w-full space-y-5"
-            onSubmit={HangleSignIn}
-          >
+          <form className="w-full space-y-5" onSubmit={HangleSignIn}>
             {/* Email Field */}
             <div className="space-y-2">
               <label className="block text-sm font-bold text-gray-800 ml-1">
@@ -96,20 +95,24 @@ const Signin = () => {
                 </button>
               </div>
               <div className="text-right">
-                <NavLink to="/forget-password"
+                <NavLink
+                  to="/forget-password"
                   className="text-sm font-semibold text-yellow-500 hover:text-yellow-600"
                 >
                   Forgot Password?
                 </NavLink>
               </div>
             </div>
+            {error && <p className="text-red-500 text-sm">{error}</p>}
 
             {/* Login Button */}
-            <button type="submit" className="w-full py-4 bg-[#E9C46A] hover:bg-[#dfb44e] text-gray-900 font-bold rounded-xl transition-colors mt-2 shadow-sm">
+            <button
+              type="submit"
+              className="w-full py-4 bg-[#E9C46A] hover:bg-[#dfb44e] text-gray-900 font-bold rounded-xl transition-colors mt-2 shadow-sm"
+            >
               Login
             </button>
           </form>
-          
 
           {/* Divider */}
           <div className="w-full flex items-center my-8">
@@ -121,7 +124,10 @@ const Signin = () => {
           </div>
 
           {/* Social Login */}
-          <button onClick={HandleSignInwithGoogle} className="w-full flex items-center justify-center gap-3 border border-gray-200 py-3 rounded-xl hover:bg-gray-50 transition mb-6">
+          <button
+            onClick={HandleSignInwithGoogle}
+            className="w-full flex items-center justify-center gap-3 border border-gray-200 py-3 rounded-xl hover:bg-gray-50 transition mb-6"
+          >
             <img
               src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
               alt="Google"
@@ -135,7 +141,10 @@ const Signin = () => {
           {/* Footer Link */}
           <p className="mt-10 text-gray-500 font-medium">
             Don't have an account?{" "}
-            <NavLink to="/signup" className="text-yellow-500 font-bold hover:underline">
+            <NavLink
+              to="/signup"
+              className="text-yellow-500 font-bold hover:underline"
+            >
               Sign Up
             </NavLink>
           </p>

@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router";
+import { Navigate, NavLink, useNavigate } from "react-router";
 import logo from "../assets/logo.png";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Header = () => {
   const { user, SignOut } = useContext(AuthContext);
   const [seeUserName, setSeeUserName] = useState(false);
+  const navigate = useNavigate()
 
   console.log("user", user);
 
@@ -69,6 +70,7 @@ const Header = () => {
                 onMouseEnter={() => setSeeUserName(true)}
                 onMouseLeave={() => setSeeUserName(false)}
                 className="flex items-center justify-center"
+                onClick={() => navigate('/profile')}
               >
                 <img
                   className="rounded-4xl max-w-8 h-fit"
