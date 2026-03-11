@@ -1,11 +1,11 @@
 import './App.css'
-import { ToastContainer } from "react-toastify";
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
   return (
     <>
-      <ToastContainer position="top-right" autoClose={2000} />
+      <Toaster />
     </>
   )
 }
