@@ -8,6 +8,7 @@ import Signup from "../Pages/Signup";
 import PrivateRoute from "../Provider/PrivateRoute";
 import MyProfile from "../Pages/MyProfile";
 import Error from "../Pages/Error";
+import Loading from "../Components/Loading";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       {
         path: "/category/:id",
         Component: CategorySkills,
-        loader: () => fetch("/Skills.json")
+        loader: () => fetch("/Skills.json"),
+        hydrateFallbackElement: <Loading></Loading>
       },
     ],
   },
@@ -31,7 +33,8 @@ const router = createBrowserRouter([
     <PrivateRoute>
       <CategoryDetails></CategoryDetails>
     </PrivateRoute>,
-    loader: () => fetch("/Skills.json")
+    loader: () => fetch("/Skills.json"),
+    hydrateFallbackElement: <Loading></Loading>
   },
   {
     path: "/signin",

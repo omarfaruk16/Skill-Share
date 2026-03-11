@@ -6,7 +6,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 const Header = () => {
   const { user, SignOut } = useContext(AuthContext);
   const [seeUserName, setSeeUserName] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log("user", user);
 
@@ -17,7 +17,7 @@ const Header = () => {
     <div className="navbar  max-w-[1200px] mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -25,26 +25,25 @@ const Header = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
-          </div>
+          </label>
           <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            tabIndex={0}
+            className="menu menu-md dropdown-content bg-yellow rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <NavLink className="hover:text-yellow" to="/">
+              <NavLink className="hover:text-white" to="/">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink className="hover:text-yellow" to="/signup">
+              <NavLink className="hover:text-white" to="/signup">
                 Sign Up
               </NavLink>
             </li>
@@ -57,7 +56,7 @@ const Header = () => {
           </h4>
         </div>
       </div>
-      <div className="navbar-end hidden lg:flex ">
+      <div className="navbar-center hidden lg:flex lg:justify-end">
         <ul className="menu menu-horizontal px-1 text-md font-semibold lg:flex lg:gap-3 lg:justify-center lg:items-center">
           <li>
             <NavLink className="hover:text-yellow" to="/">
@@ -70,7 +69,7 @@ const Header = () => {
                 onMouseEnter={() => setSeeUserName(true)}
                 onMouseLeave={() => setSeeUserName(false)}
                 className="flex items-center justify-center"
-                onClick={() => navigate('/profile')}
+                onClick={() => navigate("/profile")}
               >
                 <img
                   className="rounded-4xl max-w-8 h-fit"
@@ -93,6 +92,10 @@ const Header = () => {
               </NavLink>
             )}
           </li>
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <ul>
           <li>
             {user ? (
               <button
@@ -110,8 +113,6 @@ const Header = () => {
               </NavLink>
             )}
           </li>
-
-          <p>{name}</p>
         </ul>
       </div>
     </div>

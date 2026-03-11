@@ -89,7 +89,7 @@ const stats = [
 
 const Numbers = () => {
   return (
-    <section className="bg-[#1a1816] py-20 px-6 font-sans border-t border-white/5">
+    <section className="animate__animated animate__fadeInUp animate__slow bg-[#1a1816] py-20 px-6 font-sans border-t border-white/5">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 text-center">
           {stats.map((stat) => (

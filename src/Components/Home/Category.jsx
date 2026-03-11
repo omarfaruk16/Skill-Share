@@ -26,7 +26,7 @@ const Category = () => {
             </svg>
             Browse Categories
           </div>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold text-[#1e1e1e] tracking-tight">
+          <h2 className="animate__animated animate__fadeInUp animate__slow text-5xl md:text-6xl font-serif font-bold text-[#1e1e1e]">
             What Do You Want to Learn?
           </h2>
         </div>

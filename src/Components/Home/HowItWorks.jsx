@@ -44,14 +44,14 @@ const HowItWorks = ()=> {
     >
       <div className="max-w-6xl mx-auto relative z-10">
         
-        <div className="text-center mb-20">
+        <div className="animate__animated animate__fadeInUp animate__slow text-center mb-20">
           <div className="flex items-center justify-center gap-2 text-[#e5b64c] text-sm font-semibold tracking-[0.15em] uppercase mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
             </svg>
             Simple Process
           </div>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold text-white tracking-tight mb-4">
+          <h2 className="animate__animated animate__fadeInUp animate__slowtext-5xl md:text-6xl font-serif font-bold text-white tracking-tight mb-4">
             How It Works
           </h2>
           <p className="text-[#a19d98] text-lg">

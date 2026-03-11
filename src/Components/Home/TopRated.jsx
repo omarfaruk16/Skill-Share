@@ -5,7 +5,7 @@ const TopRatedPromise = fetch("/TopProvider.json").then(res=> res.json())
 const TopRated = () => {
     const TopRated = use(TopRatedPromise)
   return (
-    <section className="bg-[#f7f7f5] py-24 px-6 min-h-screen font-sans">
+    <section className="animate__animated animate__fadeInUp animate__slow bg-[#f7f7f5] py-24 px-6 min-h-screen font-sans">
       <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-16">

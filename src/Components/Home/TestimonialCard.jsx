@@ -4,7 +4,7 @@ const TestimonialPromise = fetch("Testimonial.json").then((res) => res.json());
 const TestimonialsSection = () => {
   const Testimonialdata = use(TestimonialPromise);
   return (
-    <section className="bg-[#f6f6f4] py-24 px-6 min-h-screen font-sans">
+    <section className="animate__animated animate__fadeInUp animate__slow bg-[#f6f6f4] py-24 px-6 min-h-screen font-sans">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">

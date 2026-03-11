@@ -4,6 +4,8 @@
   themes: ["light"]; 
 }
 
+
+
 @theme {
   --font-playfair: "Playfair", serif;
   --font-roboto: "Roboto", sans-serif;

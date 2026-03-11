@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 
 const SingleSkill = ({ skill }) => {
   return (
-    <div className="max-w-[400px] w-full bg-white rounded-[2rem] overflow-hidden border border-black/[0.04] shadow-[0_4px_20px_rgba(0,0,0,0.03)] group hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer flex flex-col font-sans">
+    <div className="max-w-[400px] w-full bg-white rounded-[2rem] overflow-hidden border border-black/[0.04] shadow-[0_4px_20px_rgba(0,0,0,0.03)] group hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition-all duration-300 cursor-pointer flex flex-col  font-sans">
       <div className="relative h-[240px] w-full overflow-hidden">
         <img
           src={skill.image}

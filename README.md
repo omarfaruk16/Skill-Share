@@ -1,4 +1,4 @@
-# Skill Share
+# SkillSwap
 
 ## 🌐 Live Website
 https://your-live-site-link.com
@@ -26,15 +26,15 @@ Skill share is a platform where multiple skills are in one place. User can book 
 - React Router
 - Firebase Authentication
 - Tailwind CSS
+- Some npm packages
 
 ---
 
 ## 📦 NPM Packages Used
 
-- lucide-react
 - react-hot-toast
 - react-router
 - firebase
-- aos (Animate on Scroll)
 - animate.css
 - react-icons
+- swiper

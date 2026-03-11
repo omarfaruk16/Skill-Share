@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from "react-router";
 import Header from "../Header";
 import Footer from "../Footer";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const SkillDetails = () => {
   const { id } = useParams();
@@ -16,13 +17,14 @@ const SkillDetails = () => {
   const HandlebookingForm = (e) =>{
     e.preventDefault();
     e.target.reset();
+    toast.success("Successfully Submited the form");
     setShowForm(false);
   }
 
   return (
     <>
       <Header></Header>
-      <div className="max-w-6xl mx-auto p-6">
+      <div className="animate__animated animate__fadeInUp animate__slow max-w-6xl mx-auto p-6">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
             <img
@@ -83,11 +85,7 @@ const SkillDetails = () => {
             <h2 className="text-xl font-bold mb-4">Submit Information</h2>
 
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Form submitted");
-                setShowForm(false);
-              }}
+              onSubmit={HandlebookingForm}
               className="space-y-3"
             >
               <input

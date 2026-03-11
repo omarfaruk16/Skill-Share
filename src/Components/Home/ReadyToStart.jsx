@@ -16,7 +16,7 @@ const ReadyToStart = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(120,80,40,0.15)_0%,_transparent_70%)]"></div>
 
       <div className="relative z-10 max-w-3xl">
-        <h1 className="mb-4 text-4xl font-serif font-bold tracking-tight text-white md:text-6xl">
+        <h1 className="animate__animated animate__fadeInUp animate__slow mb-4 text-4xl font-serif font-bold tracking-tight text-white md:text-6xl">
           Ready to Start Your <br />
           <span className="text-[#e29e4b]">Learning Journey?</span>
         </h1>

@@ -61,7 +61,6 @@ const Signin = () => {
         window.open('https://mail.google.com/mail/u/0/#inbox', '_blank');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         setError(errorMessage);
         // ..
