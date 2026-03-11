@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import Header from "../Header";
 import Footer from "../Footer";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SkillDetails = () => {
   const { id } = useParams();
   const skills = useLoaderData();
+  const { user }= useContext(AuthContext)
+  console.log(user)
+  const [showForm, setShowForm] = useState(false);
 
   const skill = skills.find((data) => data.skillId === Number(id));
 
+  const HandlebookingForm = (e) =>{
+    e.preventDefault();
+    e.target.reset();
+    setShowForm(false);
+  }
+
   return (
     <>
-    <Header></Header>
+      <Header></Header>
       <div className="max-w-6xl mx-auto p-6">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
@@ -52,8 +62,11 @@ const SkillDetails = () => {
               {skill.slotsAvailable}
             </p>
 
-            <button className="mt-4 px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl font-semibold">
-              Book This Skill
+            <button
+              onClick={() => setShowForm(true)}
+              className="mt-4 px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl font-semibold"
+            >
+              Book Session
             </button>
           </div>
         </div>
@@ -63,6 +76,46 @@ const SkillDetails = () => {
           <p className="text-gray-600 leading-relaxed">{skill.description}</p>
         </div>
       </div>
+
+      {showForm && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+          <div className="bg-white p-6 rounded-xl w-[400px] shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Submit Information</h2>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("Form submitted");
+                setShowForm(false);
+              }}
+              className="space-y-3"
+            >
+              <input
+                type="text"
+                defaultValue= { user.displayName }
+                disabled
+                className="w-full border p-2 rounded"
+              />
+
+              <input
+                type="email"
+                defaultValue= { user.email }
+                disabled
+                className="w-full border p-2 rounded"
+              />
+
+              <div className="flex justify-center mt-4">
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-yellow-500 text-white rounded"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
       <Footer></Footer>
     </>
   );
