@@ -8,7 +8,6 @@ const Header = () => {
   const [seeUserName, setSeeUserName] = useState(false);
   const navigate = useNavigate();
 
-  console.log("user", user);
 
   const handleSignOut = () => {
     SignOut();

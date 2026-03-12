@@ -41,11 +41,10 @@ const Signup = () => {
       return;
     }
 
-    console.log([name, email, photourl, password]);
     SignupEmailPass(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+
         UpdateProfile({ displayName: name, photoURL: photourl}).then(()=>{
           setUser({...user, displayName: name, photoURL:photourl})                // যেহেতু আগেই email, pass দিয়ে user create করে ফেলেছি এবং পরে name & photo সংযুক্ত করবো তাই ... 
           navigate("/")
@@ -66,7 +65,6 @@ const Signup = () => {
     SignInwithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
         navigate("/");
       })
       .catch((error) => {

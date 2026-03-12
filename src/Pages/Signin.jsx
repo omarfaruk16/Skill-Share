@@ -18,14 +18,13 @@ const Signin = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  console.log(location);
+
 
   const HangleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log([email, password]);
     SignInEmailPass(email, password)
       .then((result) => {
         const user = result.user;
@@ -40,8 +39,7 @@ const Signin = () => {
     SignInwithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        navigate("/");
+        navigate(location.state ? location.state : "/");
       })
       .catch((error) => {
         setError(error.message);
@@ -52,7 +50,6 @@ const Signin = () => {
   const handleForgetPass = (e) => {
     e.preventDefault();
     const email = pastemail || e.target.email.value;
-    console.log("past email", pastemail);
     PasswordReset(email)
       .then(() => {
         toast.success("Reset email sent. Please check your email");

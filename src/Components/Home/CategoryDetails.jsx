@@ -9,7 +9,6 @@ const SkillDetails = () => {
   const { id } = useParams();
   const skills = useLoaderData();
   const { user }= useContext(AuthContext)
-  console.log(user)
   const [showForm, setShowForm] = useState(false);
 
   const skill = skills.find((data) => data.skillId === Number(id));
